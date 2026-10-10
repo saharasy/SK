@@ -1,0 +1,1447 @@
+<!DOCTYPE html>
+
+<html lang="ko">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="#EA002C" name="theme-color"/>
+<meta content="오승연 — B2C Growth Marketing Portfolio. CRM, 데이터 분석, 서비스 개선, AI를 연결해 가입부터 잔존까지 성장 구조를 설계합니다." name="description"/>
+<meta content="오승연 · B2C Growth Marketing Portfolio" property="og:title"/>
+<meta content="고객 반응을 읽고, 다음 행동을 설계합니다." property="og:description"/>
+<title>오승연 · B2C Growth Marketing Portfolio</title>
+<style>
+    :root{
+      --sk-red:#EA002C;
+      --sk-orange:#F47725;
+      --ink:#111318;
+      --ink-2:#24272F;
+      --text:#404550;
+      --muted:#737985;
+      --line:#E8E9EC;
+      --soft:#F7F7F8;
+      --soft-red:#FFF3F5;
+      --soft-orange:#FFF7F0;
+      --white:#FFFFFF;
+      --green:#1C8C58;
+      --shadow:0 20px 60px rgba(19,20,24,.08);
+      --radius:24px;
+      --focus:0 0 0 4px rgba(234,0,44,.13);
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:Pretendard,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+      color:var(--ink);
+      background:
+        radial-gradient(circle at 10% 0%, rgba(234,0,44,.055), transparent 28rem),
+        radial-gradient(circle at 100% 10%, rgba(244,119,37,.055), transparent 28rem),
+        #fff;
+      word-break:keep-all;
+      -webkit-font-smoothing:antialiased;
+    }
+    a{color:inherit;text-decoration:none}
+    button,input{font:inherit}
+    ::selection{background:rgba(234,0,44,.13)}
+
+    .scroll-progress{
+      position:fixed;left:0;top:0;height:3px;width:0;
+      background:linear-gradient(90deg,var(--sk-red),var(--sk-orange));
+      z-index:9999;
+    }
+
+    .nav{
+      position:sticky;top:0;z-index:1000;
+      backdrop-filter:blur(18px);
+      background:rgba(255,255,255,.86);
+      border-bottom:1px solid rgba(232,233,236,.8);
+    }
+    .nav-inner{
+      max-width:1180px;margin:0 auto;height:72px;padding:0 28px;
+      display:flex;align-items:center;justify-content:space-between;gap:18px;
+    }
+    .brand{display:flex;align-items:center;gap:11px;font-weight:850;letter-spacing:-.04em}
+    .brand-mark{
+      width:34px;height:34px;border-radius:12px;position:relative;overflow:hidden;
+      background:linear-gradient(135deg,var(--sk-red),var(--sk-orange));
+      box-shadow:0 8px 24px rgba(234,0,44,.22);
+    }
+    .brand-mark:before,.brand-mark:after{
+      content:"";position:absolute;background:#fff;border-radius:99px;opacity:.96;
+    }
+    .brand-mark:before{width:17px;height:4px;left:8px;top:11px;transform:rotate(-28deg)}
+    .brand-mark:after{width:13px;height:4px;left:13px;top:19px;transform:rotate(28deg)}
+    .brand small{display:block;color:var(--muted);font-size:11px;font-weight:650;letter-spacing:.02em;margin-top:2px}
+
+    .nav-links{display:flex;align-items:center;gap:6px}
+    .nav-links a,.nav-links button{
+      border:0;background:transparent;color:#535964;
+      padding:10px 12px;border-radius:12px;font-weight:700;font-size:14px;cursor:pointer;
+      transition:.18s ease;
+    }
+    .nav-links a:hover,.nav-links button:hover{background:var(--soft);color:var(--ink)}
+    .nav-links a:focus-visible,.nav-links button:focus-visible{outline:none;box-shadow:var(--focus)}
+    .nav-cta{background:var(--ink)!important;color:#fff!important;padding:10px 14px!important}
+    .nav-cta:hover{transform:translateY(-1px);background:#000!important}
+
+    .wrap{max-width:1180px;margin:0 auto;padding:0 28px}
+    .hero{
+      min-height:690px;padding:94px 0 66px;
+      display:grid;grid-template-columns:1.15fr .85fr;gap:50px;align-items:center;
+    }
+    .eyebrow{
+      display:inline-flex;align-items:center;gap:8px;
+      color:var(--sk-red);font-size:13px;font-weight:850;letter-spacing:.08em;text-transform:uppercase;
+      margin-bottom:18px;
+    }
+    .eyebrow:before{content:"";width:22px;height:2px;background:var(--sk-red);border-radius:99px}
+    h1{
+      margin:0 0 24px;font-size:64px;line-height:1.03;letter-spacing:-.055em;font-weight:900;
+    }
+    h1 .accent{
+      background:linear-gradient(90deg,var(--sk-red),var(--sk-orange));
+      -webkit-background-clip:text;background-clip:text;color:transparent;
+    }
+    .hero-copy{
+      max-width:690px;color:var(--text);font-size:19px;line-height:1.72;letter-spacing:-.022em;
+    }
+    .hero-copy strong{color:var(--ink)}
+    .hero-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px}
+    .btn{
+      display:inline-flex;align-items:center;justify-content:center;gap:8px;
+      min-height:48px;padding:0 18px;border-radius:14px;border:1px solid var(--line);
+      background:#fff;color:var(--ink);font-weight:800;font-size:14px;cursor:pointer;
+      transition:.18s ease;
+    }
+    .btn.primary{border-color:var(--ink);background:var(--ink);color:#fff}
+    .btn.red{border-color:var(--sk-red);background:var(--sk-red);color:#fff}
+    .btn:hover{transform:translateY(-2px);box-shadow:0 10px 30px rgba(0,0,0,.08)}
+    .btn:focus-visible{outline:none;box-shadow:var(--focus)}
+
+    .hero-panel{
+      border:1px solid var(--line);border-radius:28px;background:rgba(255,255,255,.78);
+      box-shadow:var(--shadow);padding:20px;position:relative;overflow:hidden;
+    }
+    .hero-panel:before{
+      content:"";position:absolute;inset:-80px -80px auto auto;width:220px;height:220px;
+      background:radial-gradient(circle,rgba(234,0,44,.12),transparent 68%);
+      pointer-events:none;
+    }
+    .panel-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px}
+    .panel-title{font-size:13px;font-weight:850;letter-spacing:.01em}
+    .live-badge{
+      display:inline-flex;align-items:center;gap:6px;padding:6px 9px;border-radius:999px;
+      background:#F2F9F5;color:var(--green);font-size:11px;font-weight:800;
+    }
+    .live-badge:before{content:"";width:7px;height:7px;border-radius:50%;background:var(--green);box-shadow:0 0 0 4px rgba(28,140,88,.11)}
+    .growth-loop{
+      display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:18px 0 10px;
+    }
+    .loop-step{
+      padding:15px 10px;border:1px solid var(--line);border-radius:16px;background:#fff;
+      transition:.18s ease;cursor:pointer;min-height:104px;
+    }
+    .loop-step:hover,.loop-step.active{border-color:rgba(234,0,44,.4);background:var(--soft-red);transform:translateY(-2px)}
+    .loop-step span{display:block;color:var(--sk-red);font-size:11px;font-weight:850;margin-bottom:8px}
+    .loop-step strong{font-size:14px;line-height:1.35}
+    .loop-step small{display:block;color:var(--muted);font-size:11px;line-height:1.35;margin-top:5px}
+    .loop-detail{
+      min-height:86px;background:var(--ink);border-radius:17px;color:#fff;padding:16px 18px;margin-top:10px;
+    }
+    .loop-detail .label{font-size:11px;color:#FFB4C2;font-weight:800;letter-spacing:.06em;text-transform:uppercase}
+    .loop-detail .value{font-size:15px;font-weight:750;line-height:1.5;margin-top:5px}
+
+    .section{padding:96px 0}
+    .section.soft{background:linear-gradient(180deg,#FAFAFB 0%,#FFF 100%)}
+    .section-head{display:flex;justify-content:space-between;align-items:end;gap:24px;margin-bottom:30px}
+    .section-title{margin:0;font-size:42px;line-height:1.14;letter-spacing:-.045em;font-weight:900}
+    .section-desc{max-width:520px;color:var(--muted);font-size:15px;line-height:1.65;text-align:right}
+
+    .kpi-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+    .kpi{
+      border:1px solid var(--line);border-radius:20px;padding:22px;background:#fff;position:relative;overflow:hidden;
+      transition:.2s ease;
+    }
+    .kpi:before{content:"";position:absolute;left:0;top:0;right:0;height:3px;background:linear-gradient(90deg,var(--sk-red),var(--sk-orange))}
+    .kpi:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
+    .kpi .num{font-size:34px;font-weight:900;letter-spacing:-.05em;line-height:1;color:var(--sk-red);margin-bottom:10px}
+    .kpi .label{font-size:14px;font-weight:800;line-height:1.4}
+    .kpi .sub{font-size:12px;color:var(--muted);line-height:1.45;margin-top:6px}
+
+    .fit-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:18px}
+    .fit-card{
+      padding:19px;border-radius:18px;background:var(--soft);border:1px solid transparent;
+      transition:.18s ease;cursor:default;
+    }
+    .fit-card:hover{border-color:rgba(234,0,44,.18);background:var(--soft-red)}
+    .fit-card .icon{
+      width:34px;height:34px;border-radius:11px;display:grid;place-items:center;
+      background:#fff;color:var(--sk-red);font-weight:900;margin-bottom:14px;border:1px solid var(--line);
+    }
+    .fit-card strong{font-size:15px}
+    .fit-card p{margin:7px 0 0;color:var(--muted);font-size:12.5px;line-height:1.55}
+
+    .project-toolbar{display:flex;gap:8px;flex-wrap:wrap;margin:22px 0}
+    .filter{
+      border:1px solid var(--line);background:#fff;border-radius:999px;padding:9px 13px;
+      font-size:12px;font-weight:800;color:var(--muted);cursor:pointer;transition:.16s ease;
+    }
+    .filter:hover,.filter.active{background:var(--ink);color:#fff;border-color:var(--ink)}
+    .filter:focus-visible{outline:none;box-shadow:var(--focus)}
+
+    .projects{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+    .project{
+      border:1px solid var(--line);border-radius:24px;background:#fff;padding:24px;
+      min-height:330px;display:flex;flex-direction:column;transition:.2s ease;position:relative;overflow:hidden;
+    }
+    .project:before{
+      content:"";position:absolute;right:-80px;top:-90px;width:210px;height:210px;border-radius:50%;
+      background:radial-gradient(circle,rgba(244,119,37,.08),transparent 68%);
+      pointer-events:none;
+    }
+    .project:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
+    .project.hide{display:none}
+    .project-top{display:flex;align-items:center;justify-content:space-between;gap:10px}
+    .project-no{font-size:12px;color:var(--sk-red);font-weight:900;letter-spacing:.08em}
+    .tags{display:flex;flex-wrap:wrap;gap:5px}
+    .tag{font-size:10.5px;font-weight:750;color:#616773;background:var(--soft);padding:5px 8px;border-radius:999px}
+    .project h3{font-size:26px;line-height:1.2;letter-spacing:-.04em;margin:18px 0 10px}
+    .project p{color:var(--text);font-size:14px;line-height:1.65;margin:0}
+    .project .metric-line{
+      display:flex;gap:10px;flex-wrap:wrap;margin:18px 0 12px;
+    }
+    .metric-pill{
+      background:var(--soft-red);color:var(--sk-red);border:1px solid #FFD7DF;
+      padding:7px 10px;border-radius:10px;font-size:12px;font-weight:850;
+    }
+    .project-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:auto;padding-top:18px}
+    .mini{
+      display:inline-flex;align-items:center;gap:7px;border:1px solid var(--line);background:#fff;
+      padding:9px 11px;border-radius:11px;font-size:12px;font-weight:800;cursor:pointer;transition:.16s ease;
+    }
+    .mini:hover{background:var(--soft)}
+    .mini.external{border-color:#FFD7DF;background:var(--soft-red);color:var(--sk-red)}
+    .mini:focus-visible{outline:none;box-shadow:var(--focus)}
+
+    .timeline{display:grid;gap:0;border-left:1px solid var(--line);margin-left:11px}
+    .timeline-item{position:relative;padding:0 0 28px 28px}
+    .timeline-item:last-child{padding-bottom:0}
+    .timeline-dot{
+      position:absolute;left:-7px;top:5px;width:13px;height:13px;border-radius:50%;
+      background:#fff;border:3px solid var(--sk-red);box-shadow:0 0 0 4px #fff;
+    }
+    .timeline-meta{color:var(--sk-red);font-size:11px;font-weight:850;letter-spacing:.04em;margin-bottom:5px}
+    .timeline-title{font-size:19px;font-weight:850;letter-spacing:-.025em}
+    .timeline-copy{font-size:13.5px;color:var(--text);line-height:1.62;margin-top:7px;max-width:900px}
+
+    .skb-box{
+      margin-top:26px;border-radius:28px;background:var(--ink);color:#fff;padding:32px;
+      display:grid;grid-template-columns:1.02fr .98fr;gap:28px;align-items:center;overflow:hidden;position:relative;
+    }
+    .skb-box:after{
+      content:"";position:absolute;right:-100px;bottom:-120px;width:330px;height:330px;border-radius:50%;
+      background:radial-gradient(circle,rgba(234,0,44,.4),rgba(244,119,37,.15) 38%,transparent 70%);
+    }
+    .skb-box > *{position:relative;z-index:1}
+    .skb-box h3{font-size:32px;line-height:1.2;margin:0 0 12px;letter-spacing:-.04em}
+    .skb-box p{color:#CACDD3;font-size:14px;line-height:1.7;margin:0}
+    .skb-map{display:grid;gap:8px}
+    .skb-row{
+      display:grid;grid-template-columns:150px 24px 1fr;align-items:center;gap:8px;
+      padding:11px 12px;border:1px solid rgba(255,255,255,.11);border-radius:14px;background:rgba(255,255,255,.035)
+    }
+    .skb-row b{font-size:12px}
+    .skb-row .arr{color:#FF8198;text-align:center;font-weight:900}
+    .skb-row span{font-size:12px;color:#E8E9EC;line-height:1.4}
+
+    .contact{
+      padding:80px 0 100px;text-align:center;
+    }
+    .contact-card{
+      max-width:900px;margin:0 auto;border-radius:30px;padding:42px 28px;
+      background:linear-gradient(135deg,var(--soft-red),var(--soft-orange));
+      border:1px solid #FFE0D7;
+    }
+    .contact-card h2{font-size:40px;letter-spacing:-.045em;margin:0 0 13px}
+    .contact-card p{margin:0 auto;color:var(--text);max-width:650px;line-height:1.7}
+    .contact-actions{display:flex;justify-content:center;gap:9px;flex-wrap:wrap;margin-top:24px}
+
+    .foot{
+      border-top:1px solid var(--line);padding:22px 0 30px;color:var(--muted);font-size:12px;
+    }
+    .foot-inner{display:flex;justify-content:space-between;gap:20px;align-items:center}
+
+    /* Modal */
+    .modal{
+      position:fixed;inset:0;z-index:2000;background:rgba(11,12,16,.55);backdrop-filter:blur(8px);
+      display:none;align-items:center;justify-content:center;padding:24px;
+    }
+    .modal.open{display:flex}
+    .modal-card{
+      width:min(760px,100%);max-height:min(80vh,760px);overflow:auto;background:#fff;border-radius:26px;
+      box-shadow:0 30px 100px rgba(0,0,0,.25);padding:26px;
+    }
+    .modal-head{display:flex;justify-content:space-between;gap:18px;align-items:start}
+    .modal-head h3{font-size:29px;margin:0;letter-spacing:-.04em}
+    .close{
+      width:38px;height:38px;border:1px solid var(--line);border-radius:12px;background:#fff;cursor:pointer;
+      font-size:18px;
+    }
+    .modal-body{margin-top:18px;color:var(--text);font-size:14px;line-height:1.72}
+    .modal-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:16px}
+    .modal-block{background:var(--soft);border-radius:16px;padding:16px}
+    .modal-block strong{display:block;color:var(--ink);font-size:12px;margin-bottom:6px}
+    .modal-block span{font-size:13px;line-height:1.55}
+
+    /* Recruiter mode */
+    body.recruiter .detail-heavy{display:none!important}
+    body.recruiter .project{min-height:260px}
+    .mode-pill{
+      position:fixed;right:22px;bottom:22px;z-index:1200;
+      border:1px solid var(--line);background:rgba(255,255,255,.94);backdrop-filter:blur(12px);
+      box-shadow:0 10px 32px rgba(0,0,0,.12);border-radius:999px;padding:8px 10px 8px 13px;
+      display:flex;align-items:center;gap:9px;font-size:11px;color:var(--muted);font-weight:750;
+    }
+    .toggle{
+      width:38px;height:22px;border-radius:999px;background:#E5E7EB;border:0;padding:2px;cursor:pointer;
+      transition:.2s ease;
+    }
+    .toggle i{display:block;width:18px;height:18px;border-radius:50%;background:#fff;box-shadow:0 2px 5px rgba(0,0,0,.18);transition:.2s ease}
+    body.recruiter .toggle{background:var(--sk-red)}
+    body.recruiter .toggle i{transform:translateX(16px)}
+
+    .toast{
+      position:fixed;left:50%;bottom:30px;transform:translate(-50%,20px);z-index:2500;
+      background:var(--ink);color:#fff;padding:11px 15px;border-radius:12px;font-size:12px;font-weight:750;
+      opacity:0;pointer-events:none;transition:.22s ease;
+    }
+    .toast.show{opacity:1;transform:translate(-50%,0)}
+
+    @media (max-width:980px){
+      .hero{grid-template-columns:1fr;min-height:auto;padding-top:68px}
+      h1{font-size:50px}
+      .section-head{display:block}.section-desc{text-align:left;margin-top:10px}
+      .kpi-grid,.fit-grid{grid-template-columns:1fr 1fr}
+      .skb-box{grid-template-columns:1fr}
+    }
+    @media (max-width:720px){
+      .nav-inner,.wrap{padding-left:18px;padding-right:18px}
+      .nav-links a{display:none}
+      .nav-links .nav-cta{display:inline-flex}
+      .hero{padding-top:54px}
+      h1{font-size:41px}
+      .hero-copy{font-size:16px}
+      .growth-loop{grid-template-columns:1fr 1fr}
+      .section{padding:72px 0}
+      .section-title{font-size:34px}
+      .kpi-grid,.fit-grid,.projects{grid-template-columns:1fr}
+      .project{min-height:auto}
+      .skb-row{grid-template-columns:1fr}
+      .skb-row .arr{text-align:left}
+      .modal-grid{grid-template-columns:1fr}
+      .mode-pill{right:12px;bottom:12px}
+      .foot-inner{display:block}
+      .foot-inner span{display:block;margin-top:6px}
+    }
+
+    @media print{
+      .nav,.scroll-progress,.mode-pill,.toast,.hero-actions,.project-toolbar,.project-actions,.contact-actions{display:none!important}
+      body{background:#fff}
+      .hero{min-height:auto;padding:30px 0}
+      .section{padding:34px 0}
+      .project,.kpi,.hero-panel{break-inside:avoid;box-shadow:none}
+      .wrap{max-width:none}
+    }
+  </style>
+<meta content="" property="og:image"/>
+<style>
+  body{
+    font-family:Pretendard,"Apple SD Gothic Neo","Noto Sans KR","Malgun Gothic",-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;
+  }
+  .brand{gap:0}
+  .brand-mark{display:none!important}
+
+  @page{size:A4;margin:10mm}
+  @media print{
+    html,body{background:#fff!important}
+    body{font-size:9pt}
+    .nav,.scroll-progress,.mode-pill,.toast,.project-toolbar,.project-actions,
+    #career,.contact,.foot,.hero-panel{display:none!important}
+    .wrap{max-width:none;padding:0}
+    .hero{
+      display:block;min-height:auto;padding:0 0 9mm;margin:0;
+      page-break-after:avoid;
+    }
+    .hero h1{font-size:27pt;line-height:1.08;margin-bottom:9px}
+    .hero-copy{font-size:10pt;line-height:1.5;max-width:none}
+    .hero-actions{display:none!important}
+    .section{padding:7mm 0}
+    #fit{page-break-after:always}
+    .section-head{margin-bottom:12px}
+    .section-title{font-size:19pt}
+    .section-desc{font-size:8.3pt;line-height:1.4}
+    .kpi-grid{grid-template-columns:repeat(4,1fr);gap:6px}
+    .kpi{padding:11px;border-radius:10px}
+    .kpi .num{font-size:18pt}
+    .kpi .label{font-size:8pt}
+    .kpi .sub{font-size:7pt}
+    .fit-grid{grid-template-columns:repeat(4,1fr);gap:6px}
+    .fit-card{padding:10px;border-radius:10px}
+    .fit-card .icon{display:none}
+    .fit-card strong{font-size:8.5pt}
+    .fit-card p{font-size:7pt;line-height:1.35}
+    .skb-box{margin-top:10px;padding:13px;border-radius:12px;grid-template-columns:1fr 1fr;gap:12px}
+    .skb-box h3{font-size:14pt;margin-bottom:5px}
+    .skb-box p{font-size:7.4pt;line-height:1.4}
+    .skb-row{grid-template-columns:90px 10px 1fr;padding:5px;border-radius:6px}
+    .skb-row b,.skb-row span{font-size:6.8pt}
+    #projects{padding-top:0}
+    #projects .section-head{margin-bottom:10px}
+    .projects{grid-template-columns:1fr 1fr;gap:7px}
+    .project{min-height:0;padding:12px;border-radius:12px;break-inside:avoid}
+    .project:nth-child(n+5){display:none!important}
+    .project h3{font-size:13pt;margin:8px 0 5px}
+    .project p{font-size:7.5pt;line-height:1.4}
+    .project .detail-heavy{display:none!important}
+    .project-top .tags{display:none}
+    .metric-line{margin:7px 0 0!important}
+    .metric-pill{font-size:6.8pt;padding:4px 6px}
+    .project-no{font-size:7pt}
+  }
+</style>
+<style>
+  :root{
+    --sk-red:#EA002C;
+    --sk-orange:#F47725;
+    --sk-black:#111111;
+    --sk-text:#252525;
+    --sk-muted:#707070;
+    --sk-line:#E8E8E8;
+    --sk-soft:#F7F7F7;
+    --sk-soft-2:#FBFBFB;
+    --white:#FFFFFF;
+    --green:#188653;
+    --shadow:0 14px 38px rgba(0,0,0,.06);
+    --radius:18px;
+  }
+
+  body{
+    font-family:Pretendard,"Apple SD Gothic Neo","Noto Sans KR","Malgun Gothic",-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;
+    color:var(--sk-black);
+    background:#fff;
+    letter-spacing:-.018em;
+  }
+
+  /* SK Careers-like: white canvas, black typography, restrained red accent */
+  .nav{
+    background:rgba(255,255,255,.96);
+    border-bottom:1px solid var(--sk-line);
+    backdrop-filter:blur(14px);
+  }
+  .nav-inner{height:76px}
+  .brand{
+    font-size:17px;
+    font-weight:800;
+    letter-spacing:-.03em;
+    gap:0;
+  }
+  .brand small{
+    font-size:10.5px;
+    color:#8B8B8B;
+    font-weight:600;
+    letter-spacing:.02em;
+  }
+  .brand-mark{display:none!important}
+  .nav-links a,.nav-links button{
+    border-radius:8px;
+    font-size:13px;
+    padding:10px 12px;
+  }
+  .nav-cta{
+    background:var(--sk-red)!important;
+    border-radius:8px!important;
+  }
+
+  .hero{
+    min-height:660px;
+    padding-top:88px;
+    padding-bottom:72px;
+    grid-template-columns:1.18fr .82fr;
+  }
+  .eyebrow{
+    color:var(--sk-red);
+    font-size:12px;
+    letter-spacing:.09em;
+  }
+  .eyebrow:before{background:var(--sk-red)}
+  h1{
+    font-size:60px;
+    line-height:1.06;
+    letter-spacing:-.052em;
+    font-weight:900;
+  }
+  h1 .accent{
+    color:var(--sk-red);
+    background:none;
+    -webkit-text-fill-color:initial;
+  }
+  .hero-copy{
+    font-size:18px;
+    color:#4C4C4C;
+    max-width:700px;
+  }
+  .btn{
+    border-radius:8px;
+    min-height:46px;
+    padding:0 16px;
+    box-shadow:none;
+  }
+  .btn.primary{background:#111;border-color:#111}
+  .btn.red{background:var(--sk-red);border-color:var(--sk-red)}
+  .btn:hover{box-shadow:none;transform:translateY(-1px)}
+
+  .hero-panel{
+    border-radius:16px;
+    border:1px solid var(--sk-line);
+    box-shadow:none;
+    padding:18px;
+    background:#fff;
+  }
+  .hero-panel:before{display:none}
+  .loop-step{
+    border-radius:10px;
+    min-height:98px;
+  }
+  .loop-step:hover,.loop-step.active{
+    transform:none;
+    background:#FFF5F6;
+    border-color:#F4B4C0;
+  }
+  .loop-detail{border-radius:10px;background:#111}
+
+  .section{padding:88px 0}
+  .section.soft{
+    background:#FAFAFA;
+  }
+  .section-title{
+    font-size:40px;
+    line-height:1.16;
+  }
+  .section-desc{
+    color:#777;
+  }
+
+  .kpi-grid{gap:10px}
+  .kpi{
+    border-radius:12px;
+    padding:20px;
+    box-shadow:none;
+  }
+  .kpi:before{
+    height:2px;
+    background:var(--sk-red);
+  }
+  .kpi:hover{
+    transform:none;
+    box-shadow:none;
+    border-color:#D4D4D4;
+  }
+  .kpi .num{color:var(--sk-red);font-size:32px}
+
+  .fit-grid{gap:10px}
+  .fit-card{
+    border-radius:12px;
+    background:#fff;
+    border:1px solid var(--sk-line);
+  }
+  .fit-card:hover{
+    background:#fff;
+    border-color:#D6D6D6;
+  }
+  .fit-card .icon{
+    border-radius:8px;
+    background:#FFF5F6;
+    color:var(--sk-red);
+    border-color:#F7CED5;
+  }
+
+  .skb-box{
+    border-radius:14px;
+    background:#111;
+    padding:30px;
+  }
+  .skb-box:after{display:none}
+  .skb-row{
+    border-radius:8px;
+    background:#191919;
+    border-color:#2B2B2B;
+  }
+
+  .project-toolbar{
+    margin-top:20px;
+    margin-bottom:18px;
+  }
+  .filter{
+    border-radius:8px;
+    padding:9px 12px;
+    background:#fff;
+  }
+  .filter:hover,.filter.active{
+    background:#111;
+    border-color:#111;
+  }
+
+  .projects{
+    gap:12px;
+  }
+  .project{
+    border-radius:14px;
+    box-shadow:none;
+    padding:22px;
+    min-height:315px;
+  }
+  .project:before{display:none}
+  .project:hover{
+    transform:none;
+    box-shadow:none;
+    border-color:#CBCBCB;
+  }
+  .project h3{
+    font-size:24px;
+    margin-top:16px;
+  }
+  .tag{
+    border-radius:6px;
+    background:#F4F4F4;
+  }
+  .metric-pill{
+    background:#FFF3F5;
+    border-color:#F4D0D6;
+    color:var(--sk-red);
+    border-radius:7px;
+  }
+  .mini{
+    border-radius:8px;
+  }
+  .mini.external{
+    background:#fff;
+    color:var(--sk-red);
+    border-color:#E9B9C2;
+  }
+
+  .timeline{
+    border-left-color:#D8D8D8;
+  }
+  .timeline-dot{border-color:var(--sk-red)}
+  .timeline-meta{color:var(--sk-red)}
+
+  .contact-card{
+    background:#FAFAFA;
+    border:1px solid var(--sk-line);
+    border-radius:16px;
+  }
+
+  .modal-card{
+    border-radius:16px;
+  }
+  .modal-block{
+    border-radius:10px;
+    background:#F7F7F7;
+  }
+
+  .mode-pill{
+    border-radius:12px;
+  }
+
+  @page{size:A4;margin:10mm}
+  @media print{
+    html,body{background:#fff!important}
+    .nav,.scroll-progress,.mode-pill,.toast,.project-toolbar,.project-actions,
+    #career,.contact,.foot,.hero-panel{display:none!important}
+    .wrap{max-width:none;padding:0}
+    .hero{
+      display:block;min-height:auto;padding:0 0 8mm;
+      page-break-after:avoid;
+    }
+    .hero h1{font-size:27pt;line-height:1.08;margin-bottom:8px}
+    .hero-copy{font-size:9.8pt;line-height:1.48;max-width:none}
+    .section{padding:6mm 0}
+    #fit{page-break-after:always}
+    .section-head{margin-bottom:10px}
+    .section-title{font-size:18pt}
+    .section-desc{font-size:8pt;line-height:1.38}
+    .kpi-grid{grid-template-columns:repeat(4,1fr);gap:5px}
+    .kpi{padding:10px;border-radius:6px}
+    .kpi .num{font-size:17pt}
+    .kpi .label{font-size:7.8pt}
+    .kpi .sub{font-size:6.8pt}
+    .fit-grid{grid-template-columns:repeat(4,1fr);gap:5px}
+    .fit-card{padding:9px;border-radius:6px}
+    .fit-card .icon{display:none}
+    .fit-card strong{font-size:8.2pt}
+    .fit-card p{font-size:6.8pt;line-height:1.32}
+    .skb-box{margin-top:9px;padding:12px;border-radius:7px;grid-template-columns:1fr 1fr;gap:10px}
+    .skb-box h3{font-size:13.5pt;margin-bottom:4px}
+    .skb-box p{font-size:7.1pt;line-height:1.38}
+    .skb-row{grid-template-columns:85px 10px 1fr;padding:4px;border-radius:4px}
+    .skb-row b,.skb-row span{font-size:6.5pt}
+    #projects{padding-top:0}
+    .projects{grid-template-columns:1fr 1fr;gap:6px}
+    .project{min-height:0;padding:10px;border-radius:7px;break-inside:avoid}
+    .project:nth-child(n+5){display:none!important}
+    .project h3{font-size:12.4pt;margin:7px 0 4px}
+    .project p{font-size:7.2pt;line-height:1.36}
+    .project .detail-heavy{display:none!important}
+    .project-top .tags{display:none}
+    .metric-line{margin:6px 0 0!important}
+    .metric-pill{font-size:6.5pt;padding:3px 5px}
+    .project-no{font-size:6.8pt}
+  }
+</style>
+<style>
+/* ===== Public profile UX refinement · SK Careers-inspired ===== */
+html{
+  scroll-padding-top:88px;
+  text-size-adjust:100%;
+  -webkit-text-size-adjust:100%;
+}
+body{
+  overflow-x:hidden;
+  min-width:280px;
+}
+img,svg,video,canvas{max-width:100%;height:auto}
+button,a{-webkit-tap-highlight-color:transparent}
+button{appearance:none;-webkit-appearance:none}
+.wrap,.nav-inner,.hero>*,
+.project,.fit-card,.kpi,.profile-meta-item{min-width:0}
+
+/* Job-detail-like profile metadata */
+.profile-meta-strip{
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  border-top:1px solid var(--sk-line);
+  border-bottom:1px solid var(--sk-line);
+  margin-top:30px;
+}
+.profile-meta-item{
+  padding:15px 14px 15px 0;
+  border-right:1px solid var(--sk-line);
+}
+.profile-meta-item:last-child{border-right:0;padding-right:0;padding-left:14px}
+.profile-meta-item:not(:first-child){padding-left:14px}
+.profile-meta-item span{
+  display:block;
+  font-size:10px;
+  line-height:1.2;
+  color:#8A8A8A;
+  font-weight:700;
+  letter-spacing:.065em;
+  text-transform:uppercase;
+  margin-bottom:7px;
+}
+.profile-meta-item strong{
+  display:block;
+  font-size:13px;
+  line-height:1.4;
+  color:#1B1B1B;
+  font-weight:750;
+}
+
+/* remove tooling-like UI cues */
+.live-badge,.mode-pill{display:none!important}
+
+/* more straightforward SK Careers-like hierarchy */
+.section-head{
+  align-items:flex-start;
+  border-top:2px solid #111;
+  padding-top:20px;
+}
+.section-title{
+  font-size:clamp(31px,3.1vw,42px);
+}
+.hero h1,h1{
+  font-size:clamp(42px,5vw,62px);
+}
+.hero-copy{
+  font-size:clamp(16px,1.5vw,18px);
+}
+.project h3{
+  font-size:clamp(21px,2vw,25px);
+}
+.project p,.timeline-copy,.section-desc{
+  overflow-wrap:anywhere;
+}
+
+/* controls: obvious, not decorative */
+.filter,.mini,.btn,.nav-links a,.nav-links button{
+  transition:border-color .15s ease,background-color .15s ease,color .15s ease,transform .15s ease;
+}
+.filter:focus-visible,.mini:focus-visible,.btn:focus-visible,
+.nav-links a:focus-visible,.nav-links button:focus-visible,.loop-step:focus-visible{
+  outline:3px solid rgba(234,0,44,.16);
+  outline-offset:2px;
+}
+
+/* tablet */
+@media (max-width:1024px){
+  .hero{grid-template-columns:1fr;gap:34px;min-height:auto}
+  .hero-panel{max-width:760px}
+  .profile-meta-strip{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .profile-meta-item:nth-child(2){border-right:0}
+  .profile-meta-item:nth-child(3),
+  .profile-meta-item:nth-child(4){border-top:1px solid var(--sk-line)}
+  .profile-meta-item:nth-child(3){padding-left:0}
+  .projects{grid-template-columns:1fr 1fr}
+}
+
+/* mobile */
+@media (max-width:720px){
+  html{scroll-padding-top:70px}
+  .nav-inner{height:64px}
+  .brand{font-size:15px}
+  .brand small{font-size:9px}
+  .nav-links{
+    gap:2px;
+    overflow-x:auto;
+    -webkit-overflow-scrolling:touch;
+    scrollbar-width:none;
+  }
+  .nav-links::-webkit-scrollbar{display:none}
+  .nav-links a,.nav-links button{
+    display:none;
+  }
+  .nav-links .nav-cta{
+    display:inline-flex;
+    white-space:nowrap;
+    padding:9px 11px!important;
+  }
+  .hero{
+    padding-top:50px;
+    padding-bottom:56px;
+  }
+  .hero-actions{
+    display:grid;
+    grid-template-columns:1fr;
+  }
+  .hero-actions .btn{width:100%}
+  .profile-meta-strip{grid-template-columns:1fr}
+  .profile-meta-item,
+  .profile-meta-item:not(:first-child),
+  .profile-meta-item:last-child{
+    padding:12px 0;
+    border-right:0;
+    border-top:1px solid var(--sk-line);
+  }
+  .profile-meta-item:first-child{border-top:0}
+  .growth-loop{grid-template-columns:1fr 1fr}
+  .section{padding:64px 0}
+  .section-head{
+    display:block;
+    padding-top:16px;
+  }
+  .section-desc{
+    margin-top:12px;
+    text-align:left;
+  }
+  .kpi-grid,.fit-grid,.projects{grid-template-columns:1fr}
+  .project-toolbar{
+    display:flex;
+    flex-wrap:nowrap;
+    overflow-x:auto;
+    padding-bottom:4px;
+    -webkit-overflow-scrolling:touch;
+    scrollbar-width:none;
+  }
+  .project-toolbar::-webkit-scrollbar{display:none}
+  .filter{flex:0 0 auto;white-space:nowrap}
+  .project{min-height:auto}
+  .skb-box{padding:22px}
+  .skb-row{grid-template-columns:1fr}
+  .skb-row .arr{display:none}
+  .modal{padding:12px}
+  .modal-card{padding:20px;max-height:88vh}
+}
+
+/* narrow phones */
+@media (max-width:390px){
+  .wrap,.nav-inner{padding-left:15px;padding-right:15px}
+  .growth-loop{grid-template-columns:1fr}
+  .kpi .num{font-size:29px}
+}
+
+/* wide screens */
+@media (min-width:1440px){
+  .wrap,.nav-inner{max-width:1240px}
+}
+
+/* Safari / older browser graceful fallback */
+@supports not (backdrop-filter:blur(1px)){
+  .nav{background:#fff}
+}
+@supports not (display:grid){
+  .hero,.projects,.kpi-grid,.fit-grid,.profile-meta-strip{display:block}
+  .project,.kpi,.fit-card,.profile-meta-item{margin-bottom:12px}
+}
+
+/* motion accessibility */
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{
+    animation-duration:.01ms!important;
+    animation-iteration-count:1!important;
+    transition-duration:.01ms!important;
+  }
+}
+
+/* public-profile print */
+@media print{
+  .profile-meta-strip{
+    grid-template-columns:repeat(4,1fr);
+    margin-top:12px;
+  }
+  .profile-meta-item{padding:7px!important}
+  .profile-meta-item span{font-size:6.5pt;margin-bottom:3px}
+  .profile-meta-item strong{font-size:7.3pt}
+}
+</style></head>
+<body>
+<div class="scroll-progress" id="scrollProgress"></div>
+<nav class="nav">
+<div class="nav-inner">
+<a aria-label="맨 위로 이동" class="brand" href="#top">
+<span>오승연<small>B2C Growth Marketing Portfolio</small></span>
+</a>
+<div class="nav-links">
+<a href="#fit">한눈에 보기</a>
+<a href="#projects">대표 경험</a>
+<a href="#career">경력</a>
+<button id="copyEmailTop" type="button">Email</button>
+<a class="nav-cta" href="#contact">연락처</a>
+</div>
+</div>
+</nav>
+<main id="top">
+<section class="wrap hero">
+<div>
+<div class="eyebrow">B2C Marketing Portfolio · Oh Seungyeon</div>
+<h1>
+          고객 반응을 읽고,<br/>
+<span class="accent">다음 행동을 설계합니다.</span>
+</h1>
+<p class="hero-copy">멜론에서 가입·이용·결제·잔존 퍼널을 분석하고, CRM·프로모션·서비스 개선을 경험했습니다. <strong>고객이 어디에서 멈추는지 데이터로 찾고, 다음 행동을 설계해 실제 실행으로 연결해왔습니다.</strong></p><div aria-label="프로필 요약" class="profile-meta-strip">
+<div class="profile-meta-item">
+<span>Current</span>
+<strong>카카오엔터테인먼트 · 멜론</strong>
+</div>
+<div class="profile-meta-item">
+<span>Focus</span>
+<strong>CRM · Growth · CX</strong>
+</div>
+<div class="profile-meta-item">
+<span>Tools</span>
+<strong>SQL · AI · A/B Test</strong>
+</div>
+<div class="profile-meta-item">
+<span>Background</span>
+<strong>심리학 · LB&amp;C</strong>
+</div>
+</div>
+<div class="hero-actions">
+<a class="btn primary" href="#projects">대표 프로젝트 보기 ↓</a>
+<button class="btn" id="openQuick" type="button">핵심 경험 한눈에 보기</button>
+<button class="btn red" id="copyEmailHero" type="button">이메일 복사</button>
+</div>
+</div>
+<aside aria-label="B2C 성장 루프 인터랙션" class="hero-panel">
+<div class="panel-head">
+<div class="panel-title">고객 여정을 이렇게 봅니다</div>
+</div>
+<div class="growth-loop" id="growthLoop">
+<button class="loop-step active" data-detail="시즌 트래픽과 외부 유입을 신규 가입으로 연결합니다. MMA 캠페인에서 내부 프로모션 가입 창출 1위를 기록했습니다." data-label="신규 유입">
+<span>01</span><strong>신규 유입</strong><small>유입 → 가입</small>
+</button>
+<button class="loop-step" data-detail="서비스 안에서 첫 행동을 만들기 위해 고객 상태별 진입점과 노출 기준을 설계합니다." data-label="이용 활성">
+<span>02</span><strong>이용 활성</strong><small>인지 → 행동</small>
+</button>
+<button class="loop-step" data-detail="구매 이후까지 보고, 잔존과 이탈 구간을 다음 CRM·서비스 개선의 기준으로 되돌립니다." data-label="잔존">
+<span>03</span><strong>잔존</strong><small>이용 → 유지</small>
+</button>
+<button class="loop-step" data-detail="SQL·대시보드·AI로 반복 가능한 운영 구조를 만들고, 성과를 다음 캠페인과 예산 판단에 재활용합니다." data-label="확장">
+<span>04</span><strong>확장</strong><small>성과 → 다음 실행</small>
+</button>
+</div>
+<div class="loop-detail">
+<div class="label" id="loopLabel">Acquire</div>
+<div class="value" id="loopValue">시즌 트래픽과 외부 유입을 신규 가입으로 연결합니다. MMA 캠페인에서 내부 프로모션 가입 창출 1위를 기록했습니다.</div>
+</div>
+</aside>
+</section>
+<section class="section soft" id="fit">
+<div class="wrap">
+<div class="section-head">
+<div>
+<div class="eyebrow">Role Fit</div>
+<h2 class="section-title">이런 경험을 해왔습니다.</h2>
+</div>
+<p class="section-desc">신규 유치부터 이용 활성, 잔존, 서비스 개선까지. 구독 서비스의 고객 여정을 데이터와 실행으로 연결해온 경험을 한눈에 정리했습니다.</p>
+</div>
+<div class="kpi-grid">
+<div class="kpi">
+<div class="num">#1</div>
+<div class="label">시즌 캠페인 가입 창출</div>
+<div class="sub">동기간 내부 프로모션 기준</div>
+</div>
+<div class="kpi">
+<div class="num">+4.01%p</div>
+<div class="label">랜딩 → 구매 전환율</div>
+<div class="sub">MMA 시즌 프로모션</div>
+</div>
+<div class="kpi">
+<div class="num">2배</div>
+<div class="label">정기결제 설정자 수</div>
+<div class="sub">캐시프렌즈 · 전월 대비</div>
+</div>
+<div class="kpi">
+<div class="num">+18%</div>
+<div class="label">대상 고객 잔존율</div>
+<div class="sub">서비스 구조 개선 이후</div>
+</div>
+</div>
+<div class="fit-grid">
+<div class="fit-card">
+<div class="icon">A</div>
+<strong>Acquisition</strong>
+<p>시즌·콘텐츠 트래픽을 신규 가입과 구매로 이어지도록 퍼널을 설계합니다.</p>
+</div>
+<div class="fit-card">
+<div class="icon">R</div>
+<strong>Retention</strong>
+<p>클릭보다 구매 이후 잔존을 보고, 이탈 구간을 다음 실행의 기준으로 씁니다.</p>
+</div>
+<div class="fit-card">
+<div class="icon">CX</div>
+<strong>Service Improvement</strong>
+<p>메시지 발송만으로 풀리지 않는 병목은 진입점·노출 기준·UX 자체를 바꿉니다.</p>
+</div>
+<div class="fit-card">
+<div class="icon">AI</div>
+<strong>AI Productivity</strong>
+<p>과거 캠페인 데이터를 다음 타겟·콘텐츠 판단에 재활용하는 AI Agent를 설계했습니다.</p>
+</div>
+</div>
+<div class="skb-box">
+<div>
+<div class="eyebrow" style="color:#FF7E96;margin-bottom:12px">Why SK broadband</div>
+<h3>가입에서 끝나지 않고,<br/>이용과 잔존까지 보는 마케팅.</h3>
+<p>멜론에서 가입→이용→결제→잔존을 하나의 구독 Lifecycle로 보며 병목을 개선해왔습니다. SK브로드밴드에서도 가입→이용→부가서비스·결합→이탈 방지로 이어지는 고객 여정을 배우고, 고객 상태별 데이터와 실제 이용 경험을 연결해 더 나은 선택을 만드는 마케터로 성장하고 싶습니다.</p>
+</div>
+<div class="skb-map">
+<div class="skb-row"><b>신규 고객 유치</b><div class="arr">→</div><span>MMA·외부 유입 캠페인 / 타겟별 혜택 설계</span></div>
+<div class="skb-row"><b>이탈 방지</b><div class="arr">→</div><span>구매 이후 잔존 추적 / 고객 상태별 CRM</span></div>
+<div class="skb-row"><b>상품·서비스 개선</b><div class="arr">→</div><span>정기결제 병목 분석 / 진입 경로·노출 기준 개선</span></div>
+<div class="skb-row"><b>AI Tool 활용</b><div class="arr">→</div><span>LLM API + Cloud 기반 캠페인 AI Agent</span></div>
+</div>
+</div>
+</div>
+</section>
+<section class="section" id="projects">
+<div class="wrap">
+<div class="section-head">
+<div>
+<div class="eyebrow">Selected Projects</div>
+<h2 class="section-title">이렇게 문제를 풀었습니다.</h2>
+</div>
+<p class="section-desc">문제를 발견한 기준, 직접 한 일, 결과가 빠르게 보이도록 구성했습니다. 필터를 누르면 관심 있는 경험만 볼 수 있습니다.</p>
+</div>
+<div aria-label="프로젝트 필터" class="project-toolbar" role="group">
+<button class="filter active" data-filter="all">전체</button>
+<button class="filter" data-filter="growth">신규 유치</button>
+<button class="filter" data-filter="retention">리텐션</button>
+<button class="filter" data-filter="service">서비스 개선</button>
+<button class="filter" data-filter="ai">AI</button>
+<button class="filter" data-filter="brand">브랜드·시장</button>
+</div>
+<div class="projects">
+<article class="project" data-cat="service retention">
+<div class="project-top">
+<div class="project-no">EXPERIENCE 01</div>
+<div class="tags"><span class="tag">SQL</span><span class="tag">CX</span><span class="tag">Retention</span></div>
+</div>
+<h3>캐시프렌즈<br/>Adoption 병목 개선</h3>
+<p>
+              캐시를 보유하고도 정기결제로 이어지지 않는 이유를 CRM 인지 부족이 아니라
+              <strong>기능 발견성과 설정 경로의 문제</strong>로 재정의했습니다.
+            </p>
+<div class="metric-line">
+<span class="metric-pill">설정자 수 2배</span>
+<span class="metric-pill">잔존율 +18%</span>
+</div>
+<p class="detail-heavy">
+              SQL로 구매·이용 패턴을 나누고, 구매·프로모션 영역에 진입점을 추가했습니다.
+              고객 상태별 노출 기준과 설정 플로우를 개발 조직과 함께 구현했습니다.
+            </p>
+<div class="project-actions">
+<button class="mini" data-modal="cashfriends">상세 보기</button>
+</div>
+</article>
+<article class="project" data-cat="growth retention">
+<div class="project-top">
+<div class="project-no">EXPERIENCE 02</div>
+<div class="tags"><span class="tag">MMA</span><span class="tag">Growth</span><span class="tag">Viral</span></div>
+</div>
+<h3>MMA 시즌<br/>다음 행동 설계</h3>
+<p>
+              투표 트래픽이 가입과 구매로 이어지지 않는 문제를
+              <strong>‘참여 이후 다음 행동이 없는 퍼널’</strong>로 정의했습니다.
+            </p>
+<div class="metric-line">
+<span class="metric-pill">가입 창출 #1</span>
+<span class="metric-pill">구매전환 +4.01%p</span>
+</div>
+<p class="detail-heavy">
+              공유를 신규 가입으로 연결하는 ‘초대왕’, 이용 수준에 따라 혜택을 달리하는 ‘추가투표권’을 기획하고
+              1차 성과를 다시 분석해 2차 캠페인에 반영했습니다.
+            </p>
+<div class="project-actions">
+<button class="mini" data-modal="mma">상세 보기</button>
+<a class="mini external" href="https://www.melon.com/event/detail.htm?eventId=37225&amp;goApp=Y" rel="noreferrer noopener" target="_blank">추가투표권 보기 ↗</a>
+<a class="mini external" href="https://www.melon.com/event/detail.htm?eventId=37935" rel="noreferrer noopener" target="_blank">2026 초대왕 이벤트 보기 ↗</a>
+</div>
+</article><article class="project" data-cat="growth retention service">
+<div class="project-top">
+<div class="project-no">EXPERIENCE 03</div>
+<div class="tags"><span class="tag">CRM</span><span class="tag">KPI</span><span class="tag">Cost Efficiency</span></div>
+</div>
+<h3>CRM Growth<br/>KPI 관리</h3>
+<p>
+        클릭률만 높이는 운영보다 <strong>구매 이후 잔존과 비용 효율까지 함께 보는 기준</strong>을 익혔습니다.
+        이용·결제 상태별 반응을 비교해 타겟·혜택·채널 비중을 조정했습니다.
+      </p>
+<div class="metric-line">
+<span class="metric-pill">초기 3개월 잔존율 +16%</span>
+<span class="metric-pill">배너 진입률 약 +30%</span>
+<span class="metric-pill">인당 비용 -20%</span>
+</div>
+<p class="detail-heavy">
+        CTR·CVR·CAC·잔존율을 함께 보며, 클릭이 높더라도 구매와 잔존으로 이어지지 않으면 성공으로 판단하지 않았습니다.
+        채널별 전환·잔존 차이를 다음 캠페인의 타겟과 예산 판단에 다시 반영했습니다.
+      </p>
+<div class="project-actions">
+<button class="mini" data-modal="crmKpi">상세 보기</button>
+</div>
+</article>
+<article class="project" data-cat="ai growth">
+<div class="project-top">
+<div class="project-no">EXPERIENCE 04</div>
+<div class="tags"><span class="tag">Claude API</span><span class="tag">Cloud</span><span class="tag">CRM</span></div>
+</div>
+<h3>캠페인 데이터를<br/>다시 쓰는 AI Agent</h3>
+<p>
+              성과 데이터는 쌓이지만 새 캠페인마다 과거 사례를 다시 찾는 문제를 해결하기 위해
+              <strong>고객군별 타겟·콘텐츠 후보를 제안하는 Agent</strong>를 설계했습니다.
+            </p>
+<div class="metric-line">
+<span class="metric-pill">열람 대비 클릭 +17%</span>
+<span class="metric-pill">YoY</span>
+</div>
+<p class="detail-heavy">
+              SQL·대시보드 구조를 정리하고, 과거 반응을 추천 근거로 사용했습니다.
+              브랜드 맥락·제외 조건은 사람이 검증하고 실제 발송 결과는 다음 추천에 다시 반영했습니다.
+            </p>
+<div class="project-actions">
+<button class="mini" data-modal="agent">상세 보기</button>
+</div>
+</article>
+<article class="project" data-cat="growth ai">
+<div class="project-top">
+<div class="project-no">EXPERIENCE 05</div>
+<div class="tags"><span class="tag">DFA</span><span class="tag">GTM</span><span class="tag">Creative</span></div>
+</div>
+<h3>멜론 라이트<br/>DFA 업셀링</h3>
+<p>앱 플레이어 최초 재생 맥락에 맞춰 30초 광고의 콘티·메시지·나레이션을 기획하고, AI HTML 시연으로 내부 설명과 외부 제작 협업을 빠르게 맞추는 경험을 했습니다.</p>
+<div class="metric-line"><span class="metric-pill">16개 소재 중 CTR 1위</span><span class="metric-pill">2위 대비 1.8배</span></div>
+<p class="detail-heavy">
+              단순 기능 설명 대신 이용자가 체감하는 ‘기다림’을 출발점으로 업셀 메시지를 구성하고,
+              제작사·디자인 조직과 실제 집행까지 연결했습니다.
+            </p>
+<div class="project-actions">
+<button class="mini" data-modal="dfa">상세 보기</button>
+</div>
+</article><article class="project" data-cat="growth">
+<div class="project-top">
+<div class="project-no">EXPERIENCE 06</div>
+<div class="tags"><span class="tag">0→1</span><span class="tag">Referral</span><span class="tag">SNS</span></div>
+</div>
+<h3>외부 유입 실험<br/>탄생곡 × 럭키박스</h3>
+<p>비로그인·외부 유입을 늘리기 위해 감성 트리거와 공유 리워드를 활용한 <strong>신규 포맷을 직접 실험</strong>했습니다. 성과가 확인된 포맷은 후속 기획에 다시 반영했습니다.</p>
+<div class="metric-line"><span class="metric-pill">탄생곡 PV 89.1만</span><span class="metric-pill">참여자 16.7만</span><span class="metric-pill">유입 LV 2.3만</span></div>
+<p class="detail-heavy">‘탄생곡을 알려줘’는 비로그인·이탈 유저 재유입을 목표로 생일 노래와 공유를 결합했고, ‘럭키박스’는 랜덤 리워드와 친구 공유를 통해 반복 참여를 유도했습니다.</p>
+<div class="project-actions"><button class="mini" data-modal="externalGrowth">상세 보기</button><a class="mini external" href="https://m2.melon.com/event/detail.htm?eventId=36852&amp;goAPP=Y" rel="noreferrer noopener" target="_blank">탄생곡 보기 ↗</a><a class="mini external" href="https://www.melon.com/event/detail.htm?eventId=36975" rel="noreferrer noopener" target="_blank">럭키박스 보기 ↗</a></div>
+</article>
+<article class="project" data-cat="brand">
+<div class="project-top">
+<div class="project-no">EXPERIENCE 07</div>
+<div class="tags"><span class="tag">Market Insight</span><span class="tag">Trend</span><span class="tag">B2B</span></div>
+</div>
+<h3>하이트진로<br/>신제품 고객 분석</h3>
+<p>
+              출시 초기 3개월 데이터를 세분화해 20~24세 여성 고객의 상대적 저반응을 발견하고,
+              시장·소비자 트렌드와 경쟁 사례를 바탕으로 보완 전략을 제안했습니다.
+            </p>
+<div class="metric-line">
+<span class="metric-pill">2024 사업계획 아이템 선정</span>
+</div>
+<p class="detail-heavy">
+              정기 트렌드 리포트, B2B 콜라보레이션, 예상 시너지·이익 구조까지 정리하며
+              데이터 인사이트를 사업계획과 실제 프로모션 아이디어로 연결했습니다.
+            </p>
+<div class="project-actions">
+<button class="mini" data-modal="hite">상세 보기</button>
+</div>
+</article>
+</div>
+</div>
+</section>
+<section class="section soft" id="career">
+<div class="wrap">
+<div class="section-head">
+<div>
+<div class="eyebrow">Career Journey</div>
+<h2 class="section-title">경력과 경험</h2>
+</div>
+<p class="section-desc">시장 반응을 보는 일에서 시작해, 고객의 이용·결제·잔존을 보는 일까지 관심의 범위를 넓혀왔습니다.</p>
+</div>
+<div class="timeline">
+<div class="timeline-item">
+<div class="timeline-dot"></div>
+<div class="timeline-meta">2025.02 — PRESENT</div>
+<div class="timeline-title">Kakao Entertainment · 뮤직플랫폼구독성장</div>
+<div class="timeline-copy">CRM·Growth, 상품·서비스 개선, 시즌 프로모션, 제휴·광고, AI 활용. 가입부터 잔존까지 구독 고객 여정을 관리합니다.</div>
+</div>
+<div class="timeline-item">
+<div class="timeline-dot"></div>
+<div class="timeline-meta">2024.03 — 2025.01</div>
+<div class="timeline-title">Kakao Entertainment · 멜론구독마케팅팀 Intern</div>
+<div class="timeline-copy">고객 세분화, CRM 캠페인, 이용권 구매·정기결제 퍼널 분석, 채널·콘텐츠 운영을 통해 구독 마케팅의 실행 기반을 익혔습니다.</div>
+</div>
+<div class="timeline-item">
+<div class="timeline-dot"></div>
+<div class="timeline-meta">2023.09 — 2023.12</div>
+<div class="timeline-title">HiteJinro · 맥주브랜드팀 Intern</div>
+<div class="timeline-copy">신제품 초기 반응 분석, 시장·소비자 트렌드 리포트, B2B 콜라보·프로모션 기획을 경험했습니다.</div>
+</div>
+<div class="timeline-item">
+<div class="timeline-dot"></div>
+<div class="timeline-meta">2023.02 — 2023.08</div>
+<div class="timeline-title">CIEE Seoul · 미주기획팀 Intern</div>
+<div class="timeline-copy">미국 대학생 대상 프로그램을 운영하며 고객 접점, VOC, 현장 이슈 대응과 운영 개선의 기본기를 쌓았습니다.</div>
+</div>
+</div>
+</div>
+</section>
+<section class="contact" id="contact">
+<div class="wrap">
+<div class="contact-card">
+<div class="eyebrow" style="justify-content:center">Let’s build the next action</div>
+<h2>고객의 다음 행동을 이해하는<br/>마케터로 성장하겠습니다.</h2>
+<p>
+            데이터에서 병목을 찾고, 타겟·혜택·채널·서비스 경험을 함께 살피며 신규 유치와 이탈 방지를 연결하는 B2C 마케터로 성장하겠습니다.
+          </p>
+<div class="contact-actions">
+<button class="btn primary" id="copyEmailBottom">saharasy@naver.com 복사</button>
+<a class="btn" href="mailto:saharasy@naver.com">메일 보내기 ↗</a>
+<a class="btn red" href="#top">처음으로 ↑</a>
+</div>
+</div>
+</div>
+</section>
+</main>
+<footer class="foot">
+<div class="wrap foot-inner">
+<strong>오승연 · B2C Growth Marketing Portfolio</strong>
+<span>CRM · Data Analysis · Service Improvement · AI</span>
+<span>© 2026 Seungyeon Oh</span>
+</div>
+</footer>
+<div aria-labelledby="modalTitle" aria-modal="true" class="modal" id="modal" role="dialog">
+<div class="modal-card">
+<div class="modal-head">
+<div>
+<div class="eyebrow" style="margin-bottom:8px">프로젝트 상세</div>
+<h3 id="modalTitle">Project</h3>
+</div>
+<button aria-label="닫기" class="close" id="modalClose" type="button">×</button>
+</div>
+<div class="modal-body" id="modalBody"></div>
+</div>
+</div>
+<div class="toast" id="toast">복사했습니다.</div>
+<script>
+    const email = 'saharasy@naver.com';
+
+    // Scroll progress
+    const progress = document.getElementById('scrollProgress');
+    const updateProgress = () => {
+      const h = document.documentElement.scrollHeight - window.innerHeight;
+      progress.style.width = (h > 0 ? (window.scrollY / h) * 100 : 0) + '%';
+    };
+    window.addEventListener('scroll', updateProgress, {passive:true});
+    updateProgress();
+
+    // Growth loop
+    const loopButtons = [...document.querySelectorAll('.loop-step')];
+    const loopLabel = document.getElementById('loopLabel');
+    const loopValue = document.getElementById('loopValue');
+    loopButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        loopButtons.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        loopLabel.textContent = btn.dataset.label;
+        loopValue.textContent = btn.dataset.detail;
+      });
+    });
+
+    // Filter
+    const filters = [...document.querySelectorAll('.filter')];
+    const projects = [...document.querySelectorAll('.project')];
+    filters.forEach(f => f.addEventListener('click', () => {
+      filters.forEach(x => x.classList.remove('active'));
+      f.classList.add('active');
+      const key = f.dataset.filter;
+      projects.forEach(p => {
+        const cats = p.dataset.cat.split(' ');
+        p.classList.toggle('hide', key !== 'all' && !cats.includes(key));
+      });
+    }));
+
+    // Toast + copy
+    const toast = document.getElementById('toast');
+    let toastTimer;
+    function showToast(msg='복사했습니다.'){
+      clearTimeout(toastTimer);
+      toast.textContent = msg;
+      toast.classList.add('show');
+      toastTimer = setTimeout(() => toast.classList.remove('show'), 1700);
+    }
+    async function copyEmail(){
+      try{
+        await navigator.clipboard.writeText(email);
+        showToast('이메일을 복사했습니다.');
+      }catch(e){
+        const t = document.createElement('textarea');
+        t.value = email; document.body.appendChild(t); t.select();
+        document.execCommand('copy'); t.remove();
+        showToast('이메일을 복사했습니다.');
+      }
+    }
+    ['copyEmailTop','copyEmailHero','copyEmailBottom'].forEach(id => {
+      document.getElementById(id)?.addEventListener('click', copyEmail);
+    });
+
+    
+
+    // Project modal data
+    const modalData = {
+      cashfriends: {
+        title:'캐시프렌즈 Adoption 병목 개선',
+        problem:'정기결제 설정률이 5% 미만이었고, 처음에는 CRM 인지 부족을 원인으로 봤습니다.',
+        action:'SQL로 구매·이용 패턴을 나눠 보니 기능 발견성과 복잡한 설정 경로가 실제 병목이었습니다. 구매·프로모션 영역에 진입점을 추가하고 고객 상태별 노출 기준과 설정 플로우를 개발 조직과 구현했습니다.',
+        result:'정기결제 설정자 수 전월 대비 2배, 대상 고객 잔존율 +18%.',
+        fit:'가입 후 이용·결제·잔존까지 이어지는 통신·미디어 고객 여정에서도 “메시지를 더 보내기 전에 서비스 안의 병목을 찾는” 방식으로 적용할 수 있습니다.'
+      },
+      mma: {
+        title:'MMA 시즌 다음 행동 설계',
+        problem:'투표 트래픽은 컸지만 비구독 고객이 투표 후 이탈해 가입과 구매로 이어지지 않았습니다.',
+        action:'문제를 트래픽 부족이 아니라 참여 이후 다음 행동이 없는 퍼널로 정의했습니다. 공유를 가입으로 연결하는 초대왕과 이용 수준별 추가투표권을 기획하고, 1차 결과를 SQL로 다시 분석해 2차 타겟·혜택에 반영했습니다.',
+        result:'동기간 내부 프로모션 가입 창출 1위, 랜딩 대비 구매전환율 +4.01%p, X 실시간 트렌드 노출. 이후 유사 구조가 반복 활용됐습니다.',
+        fit:'대규모 시즌 트래픽을 일회성 방문으로 끝내지 않고 가입·재이용으로 연결하는 구조는 B tv 콘텐츠·프로모션 고객 전환에도 직접 연결됩니다.'
+      },
+      externalGrowth: {
+        title:'외부 유입 실험 — 탄생곡 × 럭키박스',
+        problem:'기존 CRM이 기가입자 중심이라, 비로그인·외부 유입을 만들 수 있는 신규 포맷 실험이 필요했습니다.',
+        action:'‘탄생곡을 알려줘’에서는 생일 노래라는 감성 트리거와 공유 구조를 결합했고, ‘럭키박스’에서는 랜덤 리워드와 친구 공유를 결합해 외부 유입·로그인·반복 참여를 실험했습니다.',
+        result:'‘탄생곡을 알려줘’ 기준 PV 89.1만, 참여자 16.7만, 유입 LV 2.3만. 이후 럭키박스 등 후속 신규 포맷 실험으로 확장했습니다.',
+        fit:'신규 고객이 반응할 가설을 작게 실험하고, 실제 데이터로 다음 포맷을 고르는 방식으로 적용하겠습니다.'
+      },
+      agent: {
+        title:'캠페인 성과를 다시 쓰는 AI Agent',
+        problem:'SQL과 대시보드에 성과가 쌓여도 새 캠페인마다 과거 사례를 다시 찾아 타겟과 메시지를 정해야 했습니다.',
+        action:'Claude LLM API와 Google Cloud를 연동하고, 과거 캠페인의 고객군·혜택·콘텐츠·반응 데이터를 근거로 타겟과 콘텐츠 후보를 제안하도록 설계했습니다. 예외 고객과 브랜드 맥락은 담당자가 검증하고 실제 결과는 다음 추천에 반영했습니다.',
+        result:'반복 탐색·초안 작업 감소, 열람 대비 클릭률 전년 대비 +17%.',
+        fit:'AI를 판단 대체가 아니라 데이터 탐색·의사결정 속도를 높이는 보조 도구로 사용합니다.'
+      },
+      crmKpi: {
+        title:'CRM Growth · KPI 관리',
+        problem:'클릭률만 보면 채널 반응은 알 수 있지만 실제 구매·잔존과 비용 효율까지 설명하기 어려웠습니다.',
+        action:'이용·결제 상태별 고객을 나누고 앱배너·톡채널·푸시 반응을 비교했습니다. CTR·CVR·CAC·잔존율을 함께 보고, 채널별 전환·잔존 차이를 다음 타겟과 예산 판단에 반영했습니다.',
+        result:'초기 3개월 잔존율 +16%, 개인화 배너 진입률 약 +30%, 인당 비용 -20%.',
+        fit:'SK브로드밴드에서도 신규 유치 수치만 보지 않고 가입 이후 이용·잔존과 비용 효율을 함께 배우며 성과관리 기준을 넓혀가겠습니다.'
+      },
+      dfa: {
+        title:'멜론 라이트 DFA 업셀링',
+        problem:'광고형 요금제 이용자에게 업셀 가치를 30초 안에 설명하면서 실제 이용 맥락과 연결해야 했습니다.',
+        action:'플레이어 최초 재생의 ‘기다림’을 메시지 출발점으로 삼아 콘티·카피·나레이션을 구성했습니다. 생성형 AI HTML 시연으로 장면 전환을 빠르게 공유하고 외부 제작사·디자인 조직과 집행까지 연결했습니다.',
+        result:'전체 16개 업셀링 소재 중 CTR 1위, 2위 대비 1.8배.',
+        fit:'상품 특성과 이용 순간을 먼저 이해하고, 고객이 체감하는 가치로 번역해 전환시키는 GTM 경험입니다.'
+      },
+      hite: {
+        title:'하이트진로 신제품 고객 분석',
+        problem:'신제품 전체 판매량만 보면 고객군별 성장 기회를 놓칠 수 있었습니다.',
+        action:'초기 3개월 데이터를 연령·성별로 세분화해 20~24세 여성의 상대적 저반응을 발견했습니다. 소비자 트렌드·경쟁 사례를 조사하고 B2B 콜라보, 콘텐츠·채널 방향과 예상 시너지를 제안했습니다. 트렌드 브리핑 자료도 정기 발행했습니다.',
+        result:'관련 제안이 2024년 사업계획 아이템으로 선정.',
+        fit:'평균 뒤에 가려진 고객군 차이를 찾아 새로운 시장 기회로 번역하는 경험입니다.'
+      }
+    };
+
+    const modal = document.getElementById('modal');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalBody = document.getElementById('modalBody');
+    const modalClose = document.getElementById('modalClose');
+
+    function openModal(key){
+      const d = modalData[key];
+      if(!d) return;
+      modalTitle.textContent = d.title;
+      modalBody.innerHTML = `
+        <div class="modal-grid">
+          <div class="modal-block"><strong>Problem</strong><span>${d.problem}</span></div>
+          <div class="modal-block"><strong>Action</strong><span>${d.action}</span></div>
+          <div class="modal-block"><strong>Result</strong><span>${d.result}</span></div>
+          <div class="modal-block"><strong>직무 연결</strong><span>${d.fit}</span></div>
+        </div>
+      `;
+      modal.classList.add('open');
+      document.body.style.overflow='hidden';
+      setTimeout(() => modalClose.focus(), 0);
+    }
+    function closeModal(){
+      modal.classList.remove('open');
+      document.body.style.overflow='';
+    }
+
+    document.querySelectorAll('[data-modal]').forEach(btn => {
+      btn.addEventListener('click', () => openModal(btn.dataset.modal));
+    });
+    modalClose.addEventListener('click', closeModal);
+    modal.addEventListener('click', e => { if(e.target === modal) closeModal(); });
+    window.addEventListener('keydown', e => { if(e.key === 'Escape' && modal.classList.contains('open')) closeModal(); });
+
+    // 30 sec summary
+    document.getElementById('openQuick')?.addEventListener('click', () => {
+      modalTitle.textContent = '핵심 경험 요약';
+      modalBody.innerHTML = `
+        <div class="modal-grid">
+          <div class="modal-block"><strong>1. 신규 유치</strong><span>MMA 시즌 캠페인으로 동기간 내부 프로모션 가입 창출 1위, 랜딩→구매 +4.01%p.</span></div>
+          <div class="modal-block"><strong>2. 이탈 방지</strong><span>클릭보다 구매 이후 잔존을 보고 채널·타겟·혜택을 반복 조정.</span></div>
+          <div class="modal-block"><strong>3. 서비스 개선</strong><span>정기결제 병목을 UX 문제로 재정의해 설정자 수 2배, 대상 고객 잔존율 +18%.</span></div>
+          <div class="modal-block"><strong>4. KPI·AI</strong><span>CTR·CVR·CAC·잔존율을 함께 보고, Claude LLM API + Google Cloud 기반 Agent로 과거 성과를 다음 캠페인 판단에 재활용.</span></div>
+        </div>
+      `;
+      modal.classList.add('open');
+      document.body.style.overflow='hidden';
+      setTimeout(() => modalClose.focus(), 0);
+    });
+  </script>
+</body>
+</html>
